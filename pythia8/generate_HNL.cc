@@ -23,6 +23,40 @@
 
 #include "fastjet/PseudoJet.hh"
 #include "fastjet/ClusterSequence.hh"
+#include "TDatabasePDG.h"
+
+
+
+class HNL
+{
+
+  
+public:
+  HNL(double mass, double g, int pid)
+  {
+    pdg=TDatabasePDG::Instance();
+    pdg->AddParticle('N2','HNL', mass, False, g, 0., 'N2', pid)
+    
+  };
+  
+  
+  
+private:
+  TDatabasePDG *pdg;
+  
+  
+  
+  
+  
+  
+  
+  
+};
+
+  
+
+
+
 
 using namespace std;
 
