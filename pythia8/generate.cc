@@ -75,7 +75,7 @@ int main(int argc, char** argv) {
 
   // Fastjet
 
-  fastjet::Strategy strategy = fastjet::Best;
+   fastjet::Strategy strategy = fastjet::Best;
   fastjet::RecombinationScheme recomb_scheme = fastjet::E_scheme;
   double rparam = 0.5;
   fastjet::JetDefinition jet_def(fastjet::antikt_algorithm, rparam,
