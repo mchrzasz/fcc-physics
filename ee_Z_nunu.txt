@@ -1,0 +1,31 @@
+! 1) Settings used in the main program.
+Main:numberOfEvents = 1         ! number of events to generate
+Main:timesAllowErrors = 3          ! how many aborts before run stops
+
+! 2) Settings related to output in init(), next() and stat().
+Init:showChangedSettings = on      ! list changed settings
+Init:showChangedParticleData = off ! list changed particle data
+Next:numberCount = 1             ! print message every n events
+Next:numberShowInfo = 1            ! print event information n times
+Next:numberShowProcess = 1         ! print process record n times
+Next:numberShowEvent = 1           ! print event record n times
+
+! 3) Beam parameter settings. Values below agree with default ones.
+Beams:idA = 11                   ! first beam, p = 2212, pbar = -2212
+Beams:idB = -11                   ! second beam, p = 2212, pbar = -2212
+
+! 4) EW Process
+Beams:eCM = 91.19                 ! CM energy of collision
+! Switching on EW (Z/gamma + W)
+WeakSingleBoson:all = on
+! Choosing neutral current
+WeakZ0:gmZmode = 0
+
+! switching making the decay: Z0-> nu_e ~nu_e
+23:onMode = off
+23:onIfMatch = 16 16
+
+! masses are in GeV !
+! pdg:ParticleData:AddParticle('N2','HNL', 1.0, False, 3.654203020370371E-21, 0., 'N2', 9900015)
+
+

@@ -1,4 +1,3 @@
-
 add_executable(fcc-pythia8-generate generate.cc)
 add_executable(fcc-pythia8-generate_HNL generate_HNL.cc)
 

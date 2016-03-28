@@ -27,6 +27,7 @@
 
 
 
+/*
 class HNL
 {
 
@@ -35,10 +36,11 @@ public:
   HNL(double mass, double g, int pid)
   {
     pdg=TDatabasePDG::Instance();
-    pdg->AddParticle('N2','HNL', mass, False, g, 0., 'N2', pid)
-    
+    pdg->AddParticle("N2","HNL", mass, false, g, 0., "N2", pid);
+        
+
   };
-  
+
   
   
 private:
@@ -49,19 +51,16 @@ private:
   
   
   
-  
-  
 };
 
   
-
+*/
 
 
 
 using namespace std;
 
 int main(int argc, char** argv) {
-
   if( argc != 2) {
     std::cerr<<"Usage: pythiafcc-generate <pythia card file>"<<std::endl;
     return 1;
@@ -79,7 +78,7 @@ int main(int argc, char** argv) {
   if(slash != std::string::npos){
     output.replace(0, slash+1, "");
   }
-  std::cout<<"start processing"<<std::endl;
+  std::cout<<"start processing2"<<std::endl;
   std::cout<<"output file: "<<output<<std::endl;
 
   auto store  = podio::EventStore();
@@ -99,6 +98,16 @@ int main(int argc, char** argv) {
   // Generator. Process selection. LHC initialization. Histogram.
   Pythia8::Pythia pythia;
   pythia.readFile(card_file);
+  //  std::cout<<"Listing Particle changes: "<<std::endl;
+  //pythia.particleData.listAll();
+  //std::cout<<"Done listing"<<std::endl;
+  std::cout<<"Now Reading new Table"<<std::endl;
+  //  pythia.particleData.readXML("/afs/cern.ch/user/m/mchrzasz/FCC/fcc-physics/pythia8/ParticleData_HNL.xml");
+  std::cout<<"Changes in particles: "<<std::endl;
+  pythia.particleData.listChanged();
+  
+  
+  
   pythia.init();
   
   unsigned nevents = pythia.mode("Main:numberOfEvents");
@@ -195,3 +204,5 @@ int main(int argc, char** argv) {
 
   return 0;
 }
+
+
