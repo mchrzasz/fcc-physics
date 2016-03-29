@@ -102,11 +102,13 @@ int main(int argc, char** argv) {
   //pythia.particleData.listAll();
   //std::cout<<"Done listing"<<std::endl;
   std::cout<<"Now Reading new Table"<<std::endl;
-  //  pythia.particleData.readXML("/afs/cern.ch/user/m/mchrzasz/FCC/fcc-physics/pythia8/ParticleData_HNL.xml");
+  pythia.particleData.readXML("/afs/cern.ch/user/m/mchrzasz/FCC/fcc-physics/pythia8/ParticleData_HNL.xml");
   std::cout<<"Changes in particles: "<<std::endl;
-  pythia.particleData.listChanged();
+  //pythia.particleData.listChanged();
   
+  //  pythia.particleData.listAll();
   
+   
   
   pythia.init();
   

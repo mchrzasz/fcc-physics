@@ -280,23 +280,22 @@ The meaning of the various properties and the format used are explained
           m0="0.00000"> 
 </particle> 
 
-<particle id="9900015", name="HNL" spinType="2" chargeType="0" colType="0"
-           m0="1.00000">
+<particle id="9900015", name="HNL" spinType="2" chargeType="0" colType="0" m0="0.00000">
 </particle> 
 
 <particle id="23" name="Z0" spinType="3" chargeType="0" colType="0" 
           m0="91.18760" mWidth="2.49520" mMin="10.00000" mMax="0.00000"> 
- <channel onMode="1" bRatio="0.1539950" products="1 -1"/> 
- <channel onMode="1" bRatio="0.1194200" products="2 -2"/> 
- <channel onMode="1" bRatio="0.1539840" products="3 -3"/> 
- <channel onMode="1" bRatio="0.1192590" products="4 -4"/> 
- <channel onMode="1" bRatio="0.1522720" products="5 -5"/> 
- <channel onMode="1" bRatio="0.0335760" products="11 -11"/> 
- <channel onMode="1" bRatio="0.0668060" products="12 -12"/> 
- <channel onMode="1" bRatio="0.0335760" products="13 -13"/> 
- <channel onMode="1" bRatio="0.0668060" products="14 -14"/> 
- <channel onMode="1" bRatio="0.0335000" products="15 -15"/> 
- <channel onMode="1" bRatio="0.0668060" products="16 -16"/> 
+! <channel onMode="1" bRatio="0.1539950" products="1 -1"/> 
+! <channel onMode="1" bRatio="0.1194200" products="2 -2"/> 
+! <channel onMode="1" bRatio="0.1539840" products="3 -3"/> 
+! <channel onMode="1" bRatio="0.1192590" products="4 -4"/> 
+! <channel onMode="1" bRatio="0.1522720" products="5 -5"/> 
+! <channel onMode="1" bRatio="0.0335760" products="11 -11"/> 
+! <channel onMode="1" bRatio="0.0668060" products="12 -12"/> 
+! <channel onMode="1" bRatio="0.0335760" products="13 -13"/> 
+! <channel onMode="1" bRatio="0.0668060" products="14 -14"/> 
+ <channel onMode="1" bRatio="1.000000" products="-16 9900015"/> 
+! <channel onMode="1" bRatio="1.000000" products="16 -16"/> 
 </particle> 
  
 <particle id="24" name="W+" antiName="W-" spinType="3" chargeType="3" colType="0" 
@@ -309,7 +308,7 @@ The meaning of the various properties and the format used are explained
  <channel onMode="1" bRatio="0.0005910" products="-5 4"/> 
  <channel onMode="1" bRatio="0.1081660" products="-11 12"/> 
  <channel onMode="1" bRatio="0.1081660" products="-13 14"/> 
- <channel onMode="1" bRatio="0.1080870" products="-15 16"/> 
+ <channel onMode="1" bRatio="0.1080870" products="-16 16"/> 
 </particle> 
  
 <particle id="25" name="h0" spinType="1" chargeType="0" colType="0" 
