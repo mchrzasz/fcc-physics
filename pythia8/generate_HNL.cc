@@ -25,37 +25,8 @@
 #include "fastjet/ClusterSequence.hh"
 #include "TDatabasePDG.h"
 
-
-
-/*
-class HNL
-{
-
-  
-public:
-  HNL(double mass, double g, int pid)
-  {
-    pdg=TDatabasePDG::Instance();
-    pdg->AddParticle("N2","HNL", mass, false, g, 0., "N2", pid);
-        
-
-  };
-
-  
-  
-private:
-  TDatabasePDG *pdg;
-  
-  
-  
-  
-  
-  
-};
-
-  
-*/
-
+// root stuff:
+#include "TDatabasePDG.h"               // for TDatabasePDG
 
 
 using namespace std;
@@ -94,19 +65,38 @@ int main(int argc, char** argv) {
   writer.registerForWrite<fcc::MCParticleCollection>("GenParticle");
   writer.registerForWrite<fcc::GenVertexCollection>("GenVertex");
   writer.registerForWrite<fcc::GenJetCollection>("GenJet");
+  // declaring new particles:
+  TDatabasePDG* pdgBase = TDatabasePDG::Instance();
+  
+  double m=1.0;  
+  double g=1.0;
+  pdgBase->AddParticle("N2","HNL", m, false, g, 0., "N2", 9900015);
+  
+  
+    
 
   // Generator. Process selection. LHC initialization. Histogram.
   Pythia8::Pythia pythia;
   pythia.readFile(card_file);
+  
+
+
+
+
+
   //  std::cout<<"Listing Particle changes: "<<std::endl;
   //pythia.particleData.listAll();
   //std::cout<<"Done listing"<<std::endl;
-  std::cout<<"Now Reading new Table"<<std::endl;
-  pythia.particleData.readXML("/afs/cern.ch/user/m/mchrzasz/FCC/fcc-physics/pythia8/ParticleData_HNL.xml");
-  std::cout<<"Changes in particles: "<<std::endl;
+  //std::cout<<"Now Reading new Table"<<std::endl;
+  //  pythia.particleData.readXML("/afs/cern.ch/user/m/mchrzasz/FCC/fcc-physics/pythia8/ParticleData_HNL.xml");
+  //std::cout<<"Changes in particles: "<<std::endl;
   //pythia.particleData.listChanged();
   
   //  pythia.particleData.listAll();
+  
+  //pythia.readFile("/afs/cern.ch/user/m/mchrzasz/FCC/fcc-physics/pythia8/ParticleData_HNL_short.xml");
+  
+  
   
    
   

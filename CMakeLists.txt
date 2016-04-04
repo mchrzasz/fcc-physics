@@ -16,6 +16,12 @@ if(NOT hepmc)
 else()
 	set(HEPMC_PREFIX $ENV{HEPMC_PREFIX})
 endif()
+set(root $ENV{ROOTSYS})
+if(NOT root)
+       message(FATAL_ERROR "You need to set ROOTSYS.")
+else()
+	set(ROOTSYS $ENV{ROOTSYS})
+endif()
 
 
 # Set up C++11
@@ -47,7 +53,7 @@ message(STATUS "Found fcc-edm: ${fccedm_DIR}")
 # enable testing infrastructure
 include(CTest)
 
-find_package(ROOT REQUIRED)
+find_package(ROOT)
 find_package(HepMC)
 find_package(Pythia8 REQUIRED)
 find_package(Fastjet)

@@ -22,8 +22,8 @@ WeakSingleBoson:all = on
 WeakZ0:gmZmode = 0
 
 ! switching making the decay: Z0-> nu_e ~nu_e
-23:onMode = off
-! 23:onIfMatch = 16 14
+23:onMode = on
+!23:onIfMatch = 16 16
 
 ! masses are in GeV !
 ! pdg:ParticleData:AddParticle('N2','HNL', 1.0, False, 3.654203020370371E-21, 0., 'N2', 9900015)
