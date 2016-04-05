@@ -20,10 +20,15 @@ Beams:eCM = 91.19                 ! CM energy of collision
 WeakSingleBoson:all = on
 ! Choosing neutral current
 WeakZ0:gmZmode = 0
+!9900015:new = N2 N2 2 0 0 1.0 0.0 0.0 0.0 1.  0   1   0   1   0
 
 ! switching making the decay: Z0-> nu_e ~nu_e
 23:onMode = on
+16:m0 = 1
+23:oneChannel = 1 1 0 14 16
 !23:onIfMatch = 16 16
+
+
 
 ! masses are in GeV !
 ! pdg:ParticleData:AddParticle('N2','HNL', 1.0, False, 3.654203020370371E-21, 0., 'N2', 9900015)

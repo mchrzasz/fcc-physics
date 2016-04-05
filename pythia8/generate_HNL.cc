@@ -71,19 +71,19 @@ int main(int argc, char** argv) {
   double m=1.0;  
   double g=1.0;
   pdgBase->AddParticle("N2","HNL", m, false, g, 0., "N2", 9900015);
+    
+  // Generator. Process selection. LHC initialization. Histogram.
+  Pythia8::Pythia pythia;
+  pythia.readString("9900015:new = N2 N2 2 0 0 1.0 0.0 0.0 0.0 1.  0   1   0   1   0");
+  
+
+  
+  pythia.readFile(card_file);
+  //pythia.readString("23:oneChannel =  1 1 0 9900015 16");
+  //pythia.SetParameters("9900015:oneChannel =  1 1 0 13 -13");
   
   
     
-
-  // Generator. Process selection. LHC initialization. Histogram.
-  Pythia8::Pythia pythia;
-  pythia.readFile(card_file);
-  
-
-
-
-
-
   //  std::cout<<"Listing Particle changes: "<<std::endl;
   //pythia.particleData.listAll();
   //std::cout<<"Done listing"<<std::endl;
