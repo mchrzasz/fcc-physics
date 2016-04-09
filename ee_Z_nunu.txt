@@ -22,12 +22,10 @@ WeakSingleBoson:all = on
 WeakZ0:gmZmode = 0
 !9900015:new = N2 N2 2 0 0 1.0 0.0 0.0 0.0 1.  0   1   0   1   0
 
-
-
 ! switching making the decay: Z0-> nu_e ~nu_e
 23:onMode = on
 16:m0 = 10
-16:tau0 = 1
+16:tau0 = 10
 16:oneChannel= 1 1 100 11 211
 16:onMode = on
 
