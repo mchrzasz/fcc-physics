@@ -76,14 +76,46 @@ double CKMelemSq(int a)
                                                {321,CKM::Vus*CKM::Vus}}  ; //K
   return CKMelemSq[a];
 }
-double CKMelemSq(int a)
+
+auto isEven = [](int x) -> bool
 {
-  std::unordered_map<int, double> CKMelemSq =
+  return x % 2 == 0;
+};
 
 
-  return CKMelemSq[a];
+
+
+
+
+double CKMelemSq(int a, int b)
+{
+  //std::unordered_map< std::pair< int,int >, double> CKMelemSq =  { {{0,0},1.}};//, {{1,1},1.}, {{2,2},1.}, {{3,3},1.}, {{4,4},1.}, {{5,5},1. }  };
+  // 0=u, 1=d, 2=s, 3=c, 4=b, 5=t
+  if( a==b) return 1.;// the same flavour
+  if( (a==0 && b==1) || (a==1 && b==0)) return CKM::Vud * CKM::Vud;
+  if( (a==0 && b==2) || (a==2 && b==0)) return CKM::Vus * CKM::Vus;
+  if( (a==0 && b==4) || (a==4 && b==0)) return CKM::Vub * CKM::Vub;
+
+  if( (a==1 && b==3) || (a==3 && b==1)) return CKM::Vcd * CKM::Vcd;
+  if( (a==2 && b==3) || (a==3 && b==2)) return CKM::Vcs * CKM::Vcs;
+  if( (a==4 && b==3) || (a==3 && b==4)) return CKM::Vcb * CKM::Vcb;
+
+  if( (a==1 && b==5) || (a==5 && b==1)) return CKM::Vtd * CKM::Vtd;
+  if( (a==2 && b==5) || (a==5 && b==2)) return CKM::Vts * CKM::Vts;
+  if( (a==4 && b==5) || (a==5 && b==4)) return CKM::Vtb * CKM::Vtb;
+
+  else return 0.;
 
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -166,17 +198,66 @@ class HNL
 
     double width = (abs(U2[alpha-1])/(16.*constants::pi))*(constants::GF * constants::GF)*(decayConstant(h)*decayConstant(h));
     width = width*(pow(m,3.))*CKMelemSq(h);
+    double par = ( ((1 - pow(l_m,2)) /(pow(m,2)  ))*((1 - pow(l_m,2)) /(pow(m,2)  ))
+            - ( ( pow(h_m,2) )/( pow(m,2))* (1 + (( pow(l_m,2) )/(  pow(m,2) ))) ));
+    if(h==113 || h==213)
+    {
+      par=( ((1 - ((pow(l_m,2))/(pow(m,2))))*(1 - ((pow(l_m,2))/(pow(m,2)))))
+            + ( (pow(h_m,2))/(pow(m,2))
+                * (1 + (((pow(l_m,2) - 2.*pow(h_m,2)))/(pow(m,2)))) ) );
+      par = par*2./(pow(h_m,2));
 
+    }
+    width = width*par;
+    double rad = sqrt( ( 1-((h_m-l_m)*(h_m-l_m))/(pow(m,2)) )
+                       * ( ( 1-((h_m+l_m)*(h_m+l_m))/(pow(m,2)) ) ) );
 
-
-
-
+    width = width*rad;
+    width = 2.*width; // Majorana case (charge conjugate channels)
+    return width;
+    
 
 
   }
+  double Width_3nu()
+  {
+    double width = (constants::GF* constants::GF)*(pow(m,5))*(U2[0]+U2[1]+U2[2])/(192.*( pow(constants::pi,3) ));
+    width = 2.*width; //
+    return width;
+    
+  }
+  double Width_H0_nu(int h, int l)
+  {
+    TParticlePDG *tPartH = pdgBase->GetParticle(h);
+    double h_m=tPartH->Mass();
+    TParticlePDG *tPartl = pdgBase->GetParticle(l);
+    double l_m=tPartl->Mass();
+    
+    double alpha;
+    if(abs(l)==12) alpha=1;
+    if(abs(l)==14) alpha=2;
+    if(abs(l)==16) alpha=3;
+    
 
 
-
+    if( h_m < m) return 0.;
+    double width = (abs(U2[alpha-1])/(32.*constants::pi))*(constants::GF*constants::GF )*(decayConstant(h)* decayConstant(h));
+    double  par = (pow(m,3))*((  pow( (1 - pow(h_m,2)  /(pow(m,2))),2)));
+    if(h==113 || h==213)
+    {
+      par = par*2./(pow(h_m,2));
+      par = par*(1 + 2.*(pow(h_m,2))/(pow(m,2)));
+            
+    }
+    
+    
+    
+    width = width*par;
+    width = 2.*width;
+    return width;
+        
+  }
+  
 
 private:
 
